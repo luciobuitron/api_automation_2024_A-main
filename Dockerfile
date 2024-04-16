@@ -24,18 +24,18 @@ RUN wget https://github.com/allure-framework/allure2/releases/download/2.18.1/al
 RUN dpkg -i allure_2.18.1-1_all.deb
 
 # install/upgrade pip
-RUN python3 -m pip install --upgrade pip
+RUN python -m pip install --upgrade pip
 
 # install virtualenv librarary/package
-RUN python3 -m pip install --user virtualenv
+RUN python -m pip install --user virtualenv
 
 # create virtualenv for the framework
-RUN python3 -m venv env
+RUN python -m venv env
 
 # activate virtual environment
 RUN . env/bin/activate
 
 # install requirements
-RUN python3 -m pip install -r requirements.txt
-RUN python3 -m pylint todo_api/ --rcfile=.pylintrc
-RUN python3 -m pytest todo_api/ -v -s --alluredir reports/allure/allure-results
+RUN python -m pip install -r requirements.txt
+RUN python -m pylint todo_api/ --rcfile=.pylintrc
+RUN python -m pytest todo_api/ -v -s --alluredir reports/allure/allure-results
