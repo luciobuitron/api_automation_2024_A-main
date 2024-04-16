@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Run Python Scripts') {
             steps {
-                withPythonEnv('python3') {
+                withPythonEnv('python') {
                     bat 'pip install -r requirements.txt'
                     bat 'python -m pytest todo_api/ -v -s --alluredir reports/allure/allure-results'
                 }
